@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ImmutableTransformation.cpp">
+    <ClCompile Include="GenericMapFunction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

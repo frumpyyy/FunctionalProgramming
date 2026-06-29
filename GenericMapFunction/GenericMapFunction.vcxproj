@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a1ffdef1-ea5f-4421-a4e9-4c6267c83224}</ProjectGuid>
-    <RootNamespace>FunctionalProgramming</RootNamespace>
+    <ProjectGuid>{cd773617-8cc1-4100-80fa-b4736ac121b2}</ProjectGuid>
+    <RootNamespace>GenericMapFunction</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,7 +139,7 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ImmutableTransformation.cpp" />
+    <ClCompile Include="GenericMapFunction.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

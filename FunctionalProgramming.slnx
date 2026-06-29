@@ -3,5 +3,6 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="FunctionalProgramming/FunctionalProgramming.vcxproj" />
+  <Project Path="FunctionalProgramming/FunctionalProgramming.vcxproj" Id="a1ffdef1-ea5f-4421-a4e9-4c6267c83224" />
+  <Project Path="GenericMapFunction/GenericMapFunction.vcxproj" Id="cd773617-8cc1-4100-80fa-b4736ac121b2" />
 </Solution>
