@@ -2,7 +2,9 @@
 #include <vector>
 #include <algorithm>
 #include <iterator>
+#include <numeric>
 #include <functional>
+#include <string>
 
 //const everywhere
 //no raw loops
@@ -45,6 +47,37 @@ auto applyingFuncAutoType(const T& input, U func) -> decltype(func(std::declval<
 	return func(input);
 }
 
+//map_vec, generic function that transforms every element of a vector from type T to type U via a function, returning a new vector.
+//using sstd::accumulate instead of std::transform as an exercise, would use std::transform normally as performance benefit and clarity.
+//std::accumulate takes in a input vector, then accumulates the outputs from an operation to an output vector specified after the input vector data range to be accumulated
+template<typename T, typename F>
+auto map_vec_accumulate(const std::vector<T>& inputVector, F func) -> std::vector<decltype(func(std::declval<T>()))> {
+	//using U allows for return type to be deduced at compile time from whatever func returns when T is passed in.
+	//for example T is int, func(int) returns a float then U is declared as type float. - no runtime cost
+	using U = decltype(func(std::declval<T>()));
+	return std::accumulate(inputVector.begin(), inputVector.end(),
+		std::vector<U>{},
+		[&func](std::vector<U> acc, const T& element) {
+			acc.push_back(func(element));
+			return acc;
+		});
+}
+
+template<typename T, typename F>
+auto map_vec_transform(const std::vector<T>& inputVector, F func) -> std::vector<decltype(func(std::declval<T>()))> {
+	//using U allows for return type to be deduced at compile time from whatever func returns when T is passed in.
+	//for example T is int, func(int) returns a float then U is declared as type float. - no runtime cost
+	using U = decltype(func(std::declval<T>()));
+	std::vector<U> result;
+	result.reserve(inputVector.size());
+	std::transform(inputVector.begin(), inputVector.end(),
+		std::back_inserter(result), [&func](const T& element) {
+			return func(element);
+		});
+
+	return result;
+}
+
 
 int main()
 {
@@ -79,7 +112,22 @@ int main()
 
 	std::cout << resauto << '\n';
 
+	const std::vector<int> intMapTest = { 1,2,3,4 };
+	const auto floats = map_vec_transform(intMapTest, [](int x) {return x * 1.5f; });
+	for (const auto v : floats)
+		std::cout << v << ", ";
+	std::cout << '\n';
 
+	const std::vector<std::string> stringMapTest = { "t", "te", "tes", "test" };
+	const auto strings = map_vec_transform(stringMapTest, [](const std::string& s) {return s.size(); });
+	for (const auto v : strings)
+		std::cout << v << ", ";
+	std::cout << '\n';
 
+	const std::vector<int> uIDs = { 1,2,3 };
+	const auto uIDStrings = map_vec_transform(uIDs, [](int x) {return "id_" + std::to_string(x); });
+	for (const auto v : uIDStrings)
+		std::cout << v << ", ";
+	std::cout << '\n';
 
 }
