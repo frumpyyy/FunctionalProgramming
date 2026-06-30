@@ -15,7 +15,7 @@ auto keepLen4(const std::vector<std::string>& inputVector) -> std::vector<std::s
 	result.reserve(inputVector.size());
 	std::copy_if(inputVector.begin(), inputVector.end(),
 		std::back_inserter(result), [](const std::string& in) {
-			return in.length() > (size_t)4;
+			return in.length() >= (size_t)4;
 		});
 	return result;
 }

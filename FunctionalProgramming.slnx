@@ -5,5 +5,6 @@
   </Configurations>
   <Project Path="FilterAndReduce/FilterAndReduce.vcxproj" Id="b00cd667-1c24-4ed6-98d6-92b8c6fde846" />
   <Project Path="FunctionalProgramming/FunctionalProgramming.vcxproj" Id="a1ffdef1-ea5f-4421-a4e9-4c6267c83224" />
+  <Project Path="FunctionComposition/FunctionComposition.vcxproj" Id="8b4f54e6-d78b-48d3-8fe5-c434ee35a0e6" />
   <Project Path="GenericMapFunction/GenericMapFunction.vcxproj" Id="cd773617-8cc1-4100-80fa-b4736ac121b2" />
 </Solution>
